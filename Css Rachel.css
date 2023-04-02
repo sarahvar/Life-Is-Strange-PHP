@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;700&display=swap');
+body {
+    font-family: 'Titillium web';
+    background-color: yellow;
+}
+.rouge{
+color: red;
+font-weight: 700;
+text-align: left;
+}
+.left {
+    text-align: left;
+}
+.rachelcenter{
+    text-align: center;
+}
+.right{
+    text-align: right;
+    
+}
+.alignRight{
+    float:right;
+}
+.centertext{
+    text-align: center;
+}
+
+.imgrachel{
+    text-align: center;
+}
+h3{
+    color:skyblue;
+}
+
+.tableau.style {
+    border-collapse: collapse;
+    min-width: 400px;
+    width: auto;
+    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+    cursor: pointer;
+    margin: 100px auto;
+    border: 0 solid midnightblue;
+}
+
+
+thead tr {
+    background-color: white;
+    text-align: center;
+}
+th, td {
+    padding : 15px 20px
+}
+tbody tr, td, th {
+    background-color: skyblue;
+    border : 10px solid brown;
+}
+
+
+.center{
+    text-align: center;
+}
+
+ul.navigation{
+    list-style: none;
+    padding: 20px 40px;
+    background-color: #EEE;
+    text-align: center;
+}
+ul.navigation li {
+    display: inline-block;
+    margin-right: 20px;
+}
