@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
 
 <div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/MmbjnweU7ts" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><iframe width="560" height="315" src="https://www.youtube.com/embed/XcE-hRlZbcU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""><br></iframe></>
 </p>
-<h2>L'histoire de Life is Strange avec Max :</h2>
+<h2>L'histoire de Life is Strange :</h2>
 <p>
     <table class="tableau-style">
 
@@ -100,7 +101,6 @@
         le lundi 07 octobre.
     </p1><br>
     <img src="https://th.bing.com/th/id/R.f0450bb826eb52476441da68d62b0a07?rik=bD1%2bx7RMHtVzmA&pid=ImgRaw&r=0" width="850" height="700"  alt="">
-<div><a href="page 2.html">page 2 </a></div>
 </body>
 </html>
         

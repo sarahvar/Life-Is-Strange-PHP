@@ -1,0 +1,92 @@
+/* Importation de la police manuscrite */
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+/* Style général */
+html, body {
+    height: 100%; /* Assurer que html et body prennent toute la hauteur de la fenêtre */
+    margin: 0; /* Enlever les marges par défaut du navigateur */
+}
+
+body {
+    background-image: url('assets/Font-écran.webp'); /* Chemin relatif vers l'image de fond */
+    background-size: cover; /* Adapte l'image à la taille de la fenêtre */
+    background-repeat: no-repeat; /* Évite la répétition de l'image */
+    background-position: center; /* Centre l'image dans la fenêtre */
+    font-family: 'Patrick Hand', cursive; /* Utiliser une police manuscrite */
+    color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Centrer le texte dans le body */
+    display: flex; /* Utiliser Flexbox pour centrer le contenu */
+    flex-direction: column; /* Alignement vertical du contenu */
+    justify-content: center; /* Centrer verticalement le contenu */
+    min-height: 100vh; /* Assurer que le body prend au moins la hauteur de la fenêtre */
+}
+
+/* Style pour les liens */
+a {
+    color: #00FF00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #f0f0f0;
+    text-shadow: 0 0 5px #00FF00;
+}
+
+/* Style pour la liste de navigation */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    position: absolute; /* Positionner les liens en bas */
+    bottom: 20px; /* Espacement depuis le bas */
+    width: 100%; /* Largeur complète de la page */
+}
+
+li {
+    margin: 0 20px;
+}
+
+li a {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    background-color: #1a1a1a;
+    color: #00FF00;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li a:hover {
+    background-color: #333;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    li {
+        margin: 0 15px;
+    }
+
+    li a {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    li {
+        margin: 0 10px;
+    }
+
+    li a {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
