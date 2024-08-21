@@ -29,7 +29,7 @@
     </audio>
 
     <!-- Message d'invite -->
-    <p id="play-message">Déplacez la souris pour démarrer la musique.</p>
+    <p id="play-message">Cliquez ici pour démarrer la musique.</p>
 
     <!-- Liste des liens en bas de la page -->
     <ul>
