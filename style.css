@@ -25,8 +25,8 @@ body {
     cursor: url('assets/curseur.png'), auto; /* Ajouter l'image comme curseur */
 }
 
-/* Assurez-vous que le curseur reste le même pour tous les éléments, y compris les liens et les boutons */
-a, button, input, textarea {
+/* Assurer que le curseur reste le même pour tous les éléments */
+a, button, input, textarea, li {
     cursor: url('assets/Curseur.png'), auto; /* Appliquer le curseur personnalisé */
 }
 
@@ -52,8 +52,27 @@ li {
     margin: 5px 0; /* Réduit l'espace vertical entre les liens */
     transition: background-color 0.3s ease; /* Transition pour l'effet de fond */
     padding: 10px 0; /* Espacement interne */
+    display: inline-block; /* Pour appliquer la transformation correctement */
 }
 
+/* Application de rotations variées */
+li:nth-child(1) {
+    transform: rotate(-5deg); /* Rotation légère à gauche */
+}
+
+li:nth-child(2) {
+    transform: rotate(10deg); /* Rotation légère à droite */
+}
+
+li:nth-child(3) {
+    transform: rotate(-8deg); /* Rotation plus marquée à gauche */
+}
+
+li:nth-child(4) {
+    transform: rotate(12deg); /* Rotation plus marquée à droite */
+}
+
+/* Style pour les éléments de liste qui contiennent des liens */
 li a {
     font-size: 1.5rem; /* Augmente la taille du texte pour plus de visibilité */
     padding: 12px 20px;
