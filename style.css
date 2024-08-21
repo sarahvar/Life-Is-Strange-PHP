@@ -22,6 +22,12 @@ body {
     justify-content: center; /* Centrer verticalement le contenu */
     align-items: center; /* Centrer horizontalement le contenu */
     min-height: 100vh; /* Assurer que le body prend au moins la hauteur de la fenêtre */
+    cursor: url('assets/curseur.png'), auto; /* Ajouter l'image comme curseur */
+}
+
+/* Assurez-vous que le curseur reste le même pour tous les éléments, y compris les liens et les boutons */
+a, button, input, textarea {
+    cursor: url('assets/Curseur.png'), auto; /* Appliquer le curseur personnalisé */
 }
 
 /* Style pour les liens */
@@ -36,7 +42,7 @@ a {
 ul {
     list-style-type: none;
     padding: 0;
-    margin: 90px 0 0 0; /* Espacement de 40px au-dessus de la liste */
+    margin: 90px 0 0 0; /* Espacement de 90px au-dessus de la liste */
     display: flex;
     flex-direction: column; /* Arrange les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
@@ -74,4 +80,3 @@ a:hover {
         padding: 8px 12px;
     }
 }
-
