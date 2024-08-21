@@ -5,16 +5,31 @@
     <title>Life Is Strange</title>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style pour l'invite */
+        #play-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: none; /* Cacher initialement */
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <!-- Balise audio avec démarrage immédiat -->
-    <audio id="background-music" autoplay>
+    <!-- Balise audio sans autoplay -->
+    <audio id="background-music">
         <source src="/assets/Life Is Strange Soundtrack.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas la balise audio.
     </audio>
 
-    <!-- Message affiché si l'autoplay ne fonctionne pas -->
-    <p id="play-message" style="display:none;">La musique ne peut pas démarrer automatiquement. Cliquez n'importe où pour la lancer.</p>
+    <!-- Message d'invite -->
+    <p id="play-message">Déplacez la souris pour démarrer la musique.</p>
 
     <!-- Liste des liens en bas de la page -->
     <ul>
@@ -27,22 +42,32 @@
     <script>
         var audio = document.getElementById('background-music');
         var playMessage = document.getElementById('play-message');
+        var musicStarted = false;
 
-        // Vérifie si la musique a démarré automatiquement
+        // Fonction pour essayer de jouer la musique
+        function tryPlayMusic() {
+            if (!musicStarted) {
+                audio.play().then(function() {
+                    musicStarted = true;
+                    playMessage.style.display = 'none'; // Cacher le message si la musique démarre
+                }).catch(function(error) {
+                    console.log("Erreur de lecture :", error);
+                });
+            }
+        }
+
+        // Afficher le message d'invite au chargement de la page
+        window.addEventListener('load', function() {
+            playMessage.style.display = 'block'; // Afficher le message d'invite
+        });
+
+        // Détecter le mouvement de la souris ou un clic
+        document.addEventListener('mousemove', tryPlayMusic);
+        document.addEventListener('click', tryPlayMusic);
+
+        // Optionnel : Cacher le message après une interaction utilisateur réussie
         audio.addEventListener('play', function() {
             playMessage.style.display = 'none';
-        });
-
-        // Si l'autoplay échoue, afficher un message demandant une interaction utilisateur
-        audio.addEventListener('pause', function() {
-            playMessage.style.display = 'block';
-        });
-
-        // Au cas où la lecture automatique échoue, jouer la musique lors de n'importe quelle interaction
-        document.addEventListener('click', function() {
-            audio.play().catch(function(error) {
-                console.log("La lecture automatique est toujours bloquée.");
-            });
         });
     </script>
 </body>
