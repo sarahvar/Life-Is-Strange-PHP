@@ -1,5 +1,5 @@
 /* Importation de la police manuscrite */
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 /* Style général */
 html, body {
@@ -8,11 +8,11 @@ html, body {
 }
 
 body {
-    background-image: url('assets/Font-écran.webp'); /* Chemin relatif vers l'image de fond */
+    background-image: url('assets/Accueil.gif'); /* Chemin relatif vers l'image de fond */
     background-size: cover; /* Adapte l'image à la taille de la fenêtre */
     background-repeat: no-repeat; /* Évite la répétition de l'image */
-    background-position: center; /* Centre l'image dans la fenêtre */
-    font-family: 'Patrick Hand', cursive; /* Utiliser une police manuscrite */
+    background-position: center 20%; /* Centre l'image avec un décalage vers le bas */
+    font-family: 'Gloria Hallelujah', cursive; /* Utiliser une police manuscrite */
     color: #f0f0f0;
     margin: 0;
     padding: 0;
@@ -20,73 +20,58 @@ body {
     display: flex; /* Utiliser Flexbox pour centrer le contenu */
     flex-direction: column; /* Alignement vertical du contenu */
     justify-content: center; /* Centrer verticalement le contenu */
+    align-items: center; /* Centrer horizontalement le contenu */
     min-height: 100vh; /* Assurer que le body prend au moins la hauteur de la fenêtre */
 }
 
 /* Style pour les liens */
 a {
-    color: #00FF00;
+    color: #ffffff; /* Texte blanc */
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-a:hover {
-    color: #f0f0f0;
-    text-shadow: 0 0 5px #00FF00;
+    font-weight: normal; /* Enlever le gras */
+    transition: transform 0.3s ease; /* Transition pour l'effet de grossissement */
 }
 
 /* Style pour la liste de navigation */
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 90px 0 0 0; /* Espacement de 40px au-dessus de la liste */
     display: flex;
-    justify-content: center;
-    margin: 0;
-    position: absolute; /* Positionner les liens en bas */
-    bottom: 20px; /* Espacement depuis le bas */
-    width: 100%; /* Largeur complète de la page */
+    flex-direction: column; /* Arrange les éléments en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
 }
 
 li {
-    margin: 0 20px;
+    margin: 5px 0; /* Réduit l'espace vertical entre les liens */
+    transition: background-color 0.3s ease; /* Transition pour l'effet de fond */
+    padding: 10px 0; /* Espacement interne */
 }
 
 li a {
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Augmente la taille du texte pour plus de visibilité */
     padding: 12px 20px;
-    background-color: #1a1a1a;
-    color: #00FF00;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 255, 0, 0.3), 0 0 20px rgba(0, 255, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Assure que le padding s'applique correctement */
 }
 
-li a:hover {
-    background-color: #333;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.4);
+/* Effet de survol pour les liens */
+a:hover {
+    transform: scale(1.1); /* Agrandit légèrement le texte au survol */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    li {
-        margin: 0 15px;
-    }
-
     li a {
-        font-size: 1rem;
+        font-size: 1.2rem;
         padding: 10px 15px;
     }
 }
 
 @media (max-width: 480px) {
-    li {
-        margin: 0 10px;
-    }
-
     li a {
-        font-size: 0.9rem;
+        font-size: 1rem;
         padding: 8px 12px;
     }
 }
+
