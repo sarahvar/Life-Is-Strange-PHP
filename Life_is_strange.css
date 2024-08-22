@@ -124,3 +124,7 @@ ul.navigation a:hover {
 .imgrachel {
     text-align: center;
 }
+img.carte {
+    max-width: 100%;
+    height: auto; /* Maintient les proportions originales de l'image */
+}

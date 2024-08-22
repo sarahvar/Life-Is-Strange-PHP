@@ -136,7 +136,8 @@
     J'ai tellement de choses à dire sur ce jeu que je ne sais pas par où commencer...
 </p>
 
-<img src="https://th.bing.com/th/id/R.f0450bb826eb52476441da68d62b0a07?rik=bD1%2bx7RMHtVzmA&pid=ImgRaw&r=0" width="850" height="700" alt="Image du jeu">
+<img src="/assets/Carte.jpg" class="carte" alt="Image du jeu">
+
 
 </body>
 </html>
