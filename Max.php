@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Page de Maxine Caulfield</title>
     <link rel="stylesheet" href="Max.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 </head>
 <body>
     <?php
