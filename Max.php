@@ -33,7 +33,7 @@
             <li>Yeux bleus</li>
         </ul>
         <div class="maxguitare">
-            <img src="Max-Guitare" height="200">
+            <img src="/assets/Max-Guitare.jpg" height="200">
         </div>
         <h3>Son rôle dans l'histoire: </h3>
 
