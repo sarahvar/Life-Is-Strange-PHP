@@ -128,12 +128,12 @@ ul.navigation a:hover {
 }
 
 /* Conteneur d'images pour un alignement horizontal */
-.imgbladerunner {
-    display: flex;
-    justify-content: center; /* Centre les images horizontalement */
-    gap: 20px; /* Espacement entre les images */
-    margin: 20px 0; /* Espacement au-dessus et en-dessous des images */
+.imgbladerunner img {
+    width: 250px; /* Largeur ajustée */
+    height: auto; /* Hauteur ajustée automatiquement pour garder les proportions */
+    margin: 10px; /* Marges pour espacer les images */
 }
+
 
 .imgcendrier {
     text-align: center;
