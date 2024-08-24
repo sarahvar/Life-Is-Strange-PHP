@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+// Marquer que l'utilisateur a visité une autre page
+$_SESSION['visited'] = true;
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

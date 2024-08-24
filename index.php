@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+// Vérifier si l'utilisateur a visité d'autres pages
+$showMessage = !isset($_SESSION['visited']) || $_SESSION['visited'] !== true;
+
+// Réinitialiser la variable de session pour que le message ne s'affiche pas lors des visites suivantes
+unset($_SESSION['visited']);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,10 +18,24 @@
         /* Style pour l'invite */
         #play-message {
             position: fixed;
-            bottom: 20px;
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: none; /* Cacher initialement */
+            cursor: pointer;
+        }
+
+        /* Style pour le bouton d'arrêt de la musique */
+        #stop-music {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 0, 0, 0.7);
             color: #fff;
             padding: 10px;
             border-radius: 5px;
@@ -29,7 +52,12 @@
     </audio>
 
     <!-- Message d'invite -->
-    <p id="play-message">Cliquez ici pour démarrer la musique.</p>
+    <?php if ($showMessage): ?>
+        <p id="play-message">Cliquez ici pour démarrer la musique.</p>
+    <?php endif; ?>
+
+    <!-- Bouton d'arrêt de la musique -->
+    <p id="stop-music">Arrêter la musique</p>
 
     <!-- Liste des liens en bas de la page -->
     <ul>
@@ -42,32 +70,53 @@
     <script>
         var audio = document.getElementById('background-music');
         var playMessage = document.getElementById('play-message');
+        var stopMusic = document.getElementById('stop-music');
         var musicStarted = false;
 
-        // Fonction pour essayer de jouer la musique
-        function tryPlayMusic() {
+        // Fonction pour jouer la musique
+        function playMusic() {
             if (!musicStarted) {
                 audio.play().then(function() {
                     musicStarted = true;
-                    playMessage.style.display = 'none'; // Cacher le message si la musique démarre
+                    if (playMessage) {
+                        playMessage.style.display = 'none'; // Cacher le message si la musique démarre
+                    }
+                    if (stopMusic) {
+                        stopMusic.style.display = 'block'; // Afficher le bouton d'arrêt
+                    }
                 }).catch(function(error) {
                     console.log("Erreur de lecture :", error);
                 });
             }
         }
 
-        // Afficher le message d'invite au chargement de la page
+        // Fonction pour arrêter la musique
+        function stopMusicPlayback() {
+            if (musicStarted) {
+                audio.pause();
+                audio.currentTime = 0; // Revenir au début de la musique
+                musicStarted = false;
+                if (stopMusic) {
+                    stopMusic.style.display = 'none'; // Cacher le bouton d'arrêt
+                }
+                if (playMessage) {
+                    playMessage.style.display = 'block'; // Réafficher le message d'invite si nécessaire
+                }
+            }
+        }
+
+        // Afficher le message d'invite au chargement de la page, s'il existe
         window.addEventListener('load', function() {
-            playMessage.style.display = 'block'; // Afficher le message d'invite
-        });
+            if (playMessage) {
+                playMessage.style.display = 'block'; // Afficher le message d'invite
+                playMessage.addEventListener('click', playMusic); // Démarrer la musique au clic sur le message
+            } else {
+                playMusic(); // Démarrer la musique immédiatement si le message ne s'affiche pas
+            }
 
-        // Détecter le mouvement de la souris ou un clic
-        document.addEventListener('mousemove', tryPlayMusic);
-        document.addEventListener('click', tryPlayMusic);
-
-        // Optionnel : Cacher le message après une interaction utilisateur réussie
-        audio.addEventListener('play', function() {
-            playMessage.style.display = 'none';
+            if (stopMusic) {
+                stopMusic.addEventListener('click', stopMusicPlayback); // Arrêter la musique au clic sur le bouton d'arrêt
+            }
         });
     </script>
 </body>
