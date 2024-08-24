@@ -1,72 +1,170 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;700&display=swap');
+/* Styles de base pour le corps de la page */
 body {
-    font-family: 'Titillium web';
-    background-color: yellow;
+    font-family: 'Gloria Hallelujah', cursive;
+    background-color: #f0f8ff; /* Couleur de fond douce */
+    color: #333; /* Couleur de texte principale */
+    margin: 0;
+    padding: 0;
 }
-.rouge{
-color: red;
-font-weight: 700;
-text-align: left;
-}
-.left {
-    text-align: left;
-}
-.rachelcenter{
-    text-align: center;
-}
-.right{
-    text-align: right;
-    
-}
-.alignRight{
-    float:right;
-}
-.centertext{
+
+/* Styles pour les titres */
+h1, h2, h3, h4 {
+    color: #003366; /* Couleur sombre pour les titres */
+    margin-top: 0;
+    margin-bottom: 20px;
     text-align: center;
 }
 
-.imgrachel{
-    text-align: center;
-}
-h3{
-    color:skyblue;
+h1 {
+    font-size: 2.5em;
 }
 
-.tableau.style {
-    border-collapse: collapse;
-    min-width: 400px;
-    width: auto;
-    box-shadow: 0 5px 50px rgba(0,0,0,0.15);
-    cursor: pointer;
-    margin: 100px auto;
-    border: 0 solid midnightblue;
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 10px;
 }
 
-
-thead tr {
-    background-color: white;
-    text-align: center;
-}
-th, td {
-    padding : 15px 20px
-}
-tbody tr, td, th {
-    background-color: skyblue;
-    border : 10px solid brown;
+h3 {
+    font-size: 1.8em;
+    color: #3399ff; /* Couleur bleu clair pour les sous-titres */
 }
 
+h4 {
+    font-size: 1.4em;
+}
 
-.center{
+/* Styles pour les paragraphes */
+p {
+    line-height: 1.6;
+    margin: 0 20px 20px;
     text-align: center;
 }
 
-ul.navigation{
+/* Styles pour les listes */
+ul {
+    margin: 0;
+    padding: 0;
     list-style: none;
-    padding: 20px 40px;
-    background-color: #EEE;
     text-align: center;
 }
+
+ul li {
+    margin: 5px 0;
+}
+
+/* Navigation */
+ul.navigation {
+    list-style: none;
+    padding: 10px 0;
+    background-color: #003366;
+    text-align: center;
+    margin: 0;
+}
+
 ul.navigation li {
     display: inline-block;
-    margin-right: 20px;
+    margin: 0 15px;
+}
+
+ul.navigation a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 400;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+ul.navigation a:hover {
+    background-color: #3399ff;
+    transition: background-color 0.3s;
+}
+
+/* Styles pour toutes les images */
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+/* Conteneur pour les images */
+.image-container {
+    display: flex;
+    justify-content: space-between; /* Espace entre les images */
+    align-items: center; /* Aligner les images au centre verticalement */
+    gap: 20px; /* Espace horizontal entre les images */
+    margin: 20px auto; /* Ajouter un espacement autour du conteneur */
+    max-width: 100%; /* Limiter la largeur du conteneur */
+    padding: 0 20px; /* Espacement interne du conteneur */
+}
+
+/* Styles pour les images dans .image-container */
+.image-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 6rem;
+}
+
+/* Centrage */
+.center {
+    text-align: center;
+}
+
+.centertext {
+    text-align: center;
+}
+
+/* Styles pour les tableaux */
+.tableau-style {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: #003366;
+    color: #ffffff;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f4f4f4;
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styles spécifiques pour certaines images */
+.imgmax {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.journalmax {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Iframe */
+iframe {
+    display: block;
+    margin: 20px auto;
 }
