@@ -1,11 +1,31 @@
 <?php
 session_start();
 
-// Vérifier si l'utilisateur a visité d'autres pages
-$showMessage = !isset($_SESSION['visited']) || $_SESSION['visited'] !== true;
+// Initialiser les variables de session si elles n'existent pas encore
+if (!isset($_SESSION['music_started'])) {
+    $_SESSION['music_started'] = false;
+}
+if (!isset($_SESSION['visited'])) {
+    $_SESSION['visited'] = false;
+}
 
-// Réinitialiser la variable de session pour que le message ne s'affiche pas lors des visites suivantes
-unset($_SESSION['visited']);
+// Vérifier si l'utilisateur a visité d'autres pages
+$showMessage = !$_SESSION['music_started'] && !$_SESSION['visited'];
+
+// Mettre à jour l'état de visite pour la prochaine fois
+$_SESSION['visited'] = true;
+
+// Gérer l'état de la musique via les clics sur le message ou le bouton
+if (isset($_GET['action'])) {
+    if ($_GET['action'] == 'start') {
+        $_SESSION['music_started'] = true;
+    } elseif ($_GET['action'] == 'stop') {
+        $_SESSION['music_started'] = false;
+    }
+}
+
+// Déterminer si le message doit être affiché
+$showMessage = !$_SESSION['music_started'] || isset($_GET['action']) && $_GET['action'] == 'stop';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,7 +45,7 @@ unset($_SESSION['visited']);
             color: #fff;
             padding: 10px;
             border-radius: 5px;
-            display: none; /* Cacher initialement */
+            display: <?php echo $showMessage ? 'block' : 'none'; ?>; /* Afficher le message si nécessaire */
             cursor: pointer;
         }
 
@@ -39,25 +59,27 @@ unset($_SESSION['visited']);
             color: #fff;
             padding: 10px;
             border-radius: 5px;
-            display: none; /* Cacher initialement */
+            display: <?php echo $_SESSION['music_started'] ? 'block' : 'none'; ?>; /* Afficher le bouton si la musique est en cours */
             cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <!-- Balise audio sans autoplay -->
-    <audio id="background-music">
+    <!-- Balise audio avec autoplay si la musique est démarrée -->
+    <audio id="background-music" <?php echo $_SESSION['music_started'] ? 'autoplay' : ''; ?>>
         <source src="/assets/Life Is Strange Soundtrack.mp3" type="audio/mpeg">
         Votre navigateur ne supporte pas la balise audio.
     </audio>
 
     <!-- Message d'invite -->
     <?php if ($showMessage): ?>
-        <p id="play-message">Cliquez ici pour démarrer la musique.</p>
+        <a href="?action=start" id="play-message">Cliquez ici pour démarrer la musique.</a>
     <?php endif; ?>
 
     <!-- Bouton d'arrêt de la musique -->
-    <p id="stop-music">Arrêter la musique</p>
+    <?php if ($_SESSION['music_started']): ?>
+        <a href="?action=stop" id="stop-music">Arrêter la musique</a>
+    <?php endif; ?>
 
     <!-- Liste des liens en bas de la page -->
     <ul>
@@ -66,58 +88,5 @@ unset($_SESSION['visited']);
         <li><a href="Chloe.php">Chloe</a></li>
         <li><a href="Rachel.php">Rachel</a></li>
     </ul>
-
-    <script>
-        var audio = document.getElementById('background-music');
-        var playMessage = document.getElementById('play-message');
-        var stopMusic = document.getElementById('stop-music');
-        var musicStarted = false;
-
-        // Fonction pour jouer la musique
-        function playMusic() {
-            if (!musicStarted) {
-                audio.play().then(function() {
-                    musicStarted = true;
-                    if (playMessage) {
-                        playMessage.style.display = 'none'; // Cacher le message si la musique démarre
-                    }
-                    if (stopMusic) {
-                        stopMusic.style.display = 'block'; // Afficher le bouton d'arrêt
-                    }
-                }).catch(function(error) {
-                    console.log("Erreur de lecture :", error);
-                });
-            }
-        }
-
-        // Fonction pour arrêter la musique
-        function stopMusicPlayback() {
-            if (musicStarted) {
-                audio.pause();
-                audio.currentTime = 0; // Revenir au début de la musique
-                musicStarted = false;
-                if (stopMusic) {
-                    stopMusic.style.display = 'none'; // Cacher le bouton d'arrêt
-                }
-                if (playMessage) {
-                    playMessage.style.display = 'block'; // Réafficher le message d'invite si nécessaire
-                }
-            }
-        }
-
-        // Afficher le message d'invite au chargement de la page, s'il existe
-        window.addEventListener('load', function() {
-            if (playMessage) {
-                playMessage.style.display = 'block'; // Afficher le message d'invite
-                playMessage.addEventListener('click', playMusic); // Démarrer la musique au clic sur le message
-            } else {
-                playMusic(); // Démarrer la musique immédiatement si le message ne s'affiche pas
-            }
-
-            if (stopMusic) {
-                stopMusic.addEventListener('click', stopMusicPlayback); // Arrêter la musique au clic sur le bouton d'arrêt
-            }
-        });
-    </script>
 </body>
 </html>
