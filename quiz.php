@@ -132,14 +132,13 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="navigation">
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="quiz.php">Quiz</a></li>
-            </ul>
-        </nav>
-    </header>
+<section class="navbar">
+    <a href="index.php" class="home-link">
+        <h1>Life Is Strange - Accueil</h1>
+    </a>
+<?php 
+    include('header.php');
+?>
     
     <div class="quiz-container">
         <h1>Quiz Interactif - Life Is Strange</h1>
