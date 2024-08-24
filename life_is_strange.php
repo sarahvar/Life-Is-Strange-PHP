@@ -45,6 +45,10 @@ $_SESSION['visited'] = true;
 </head>
 <body>
 
+<section class="navbar">
+    <a href="index.php" class="home-link">
+        <h1>Life Is Strange - Accueil</h1>
+    </a>
 <?php 
     include('header.php');
 ?>

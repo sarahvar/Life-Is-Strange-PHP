@@ -15,6 +15,11 @@ $_SESSION['visited'] = true;
     <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+<section class="navbar">
+    <a href="index.php" class="home-link">
+        <h1>Life Is Strange - Accueil</h1>
+    </a>
     <?php
     include('header.php');
     ?>

@@ -55,21 +55,21 @@ li {
     display: inline-block; /* Pour appliquer la transformation correctement */
 }
 
-/* Application de rotations variées */
+/* Application de rotations variées avec des angles réduits */
 li:nth-child(1) {
-    transform: rotate(-5deg); /* Rotation légère à gauche */
+    transform: rotate(-2deg); /* Rotation légère à gauche */
 }
 
 li:nth-child(2) {
-    transform: rotate(10deg); /* Rotation légère à droite */
+    transform: rotate(3deg); /* Rotation légère à droite */
 }
 
 li:nth-child(3) {
-    transform: rotate(-8deg); /* Rotation plus marquée à gauche */
+    transform: rotate(-4deg); /* Rotation plus marquée à gauche */
 }
 
 li:nth-child(4) {
-    transform: rotate(12deg); /* Rotation plus marquée à droite */
+    transform: rotate(6deg); /* Rotation plus marquée à droite */
 }
 
 /* Style pour les éléments de liste qui contiennent des liens */

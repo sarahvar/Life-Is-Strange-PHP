@@ -10,9 +10,14 @@ $_SESSION['visited'] = true;
 <head>
     <meta charset="UTF-8">
     <title>page3</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Rachel.css">
 </head>
 
+<section class="navbar">
+    <a href="index.php" class="home-link">
+        <h1>Life Is Strange - Accueil</h1>
+    </a>
 <body>
     <?php include('header.php'); ?>
 

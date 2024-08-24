@@ -81,12 +81,9 @@ $showMessage = !$_SESSION['music_started'] || isset($_GET['action']) && $_GET['a
         <a href="?action=stop" id="stop-music">Arrêter la musique</a>
     <?php endif; ?>
 
-    <!-- Liste des liens en bas de la page -->
-    <ul>
-        <li><a href="life_is_strange.php">L'histoire de Life is Strange</a></li>
-        <li><a href="Max.php">Max</a></li>
-        <li><a href="Chloe.php">Chloe</a></li>
-        <li><a href="Rachel.php">Rachel</a></li>
-    </ul>
+>
+<div class="container">
+        <?php include('header.php'); ?>
+    </div>
 </body>
 </html>
