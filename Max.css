@@ -81,7 +81,14 @@ ul.navigation a:hover {
     background-color: #3399ff;
     transition: background-color 0.3s;
 }
-
+.navigation a:hover,
+.navigation a.active,
+.navigation li.active a {
+    background-color: #3399ff;
+    transition: background-color 0.3s;
+    color: #ffffff;
+    font-weight: bold;
+}
 .imgmax img,
 .maxbiche img,
 .selfiemax img,

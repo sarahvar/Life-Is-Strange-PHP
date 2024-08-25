@@ -10,17 +10,18 @@
 
         /* Style général */
         body {
-            font-family: 'Gloria Hallelujah', cursive;
-            background-color: #f0f8ff; /* Couleur de fond douce */
-            color: #333; /* Couleur de texte principale */
-            margin: 0;
-            padding: 0;
-            cursor: url('assets/curseur.png'), auto; /* Ajouter l'image comme curseur */
-        }
+    font-family: 'Gloria Hallelujah', cursive;
+    background-color: #f0f8ff; /* Couleur de fond douce */
+    color: #333; /* Couleur de texte principale */
+    margin: 0;
+    padding: 0;
+    cursor: url('assets/Curseur.png') 16 16, auto; /* Ajouter le curseur avec son point de clic au centre */
+}
 
-        a, button, input, textarea, li {
-            cursor: url('assets/Curseur.png'), auto; /* Appliquer le curseur personnalisé */
-        }
+a, button, input, textarea, li {
+    cursor: url('assets/Curseur.png') 16 16, auto; /* Appliquer le curseur personnalisé */
+}
+
 
         /* Style pour les titres */
         h1, h2, h3, h4 {
@@ -146,6 +147,15 @@
             background-color: #3399ff;
             transition: background-color 0.3s;
         }
+
+        .navigation a:hover,
+        .navigation a.active,
+        .navigation li.active a {
+        background-color: #3399ff;
+        transition: background-color 0.3s;
+        color: #ffffff;
+        font-weight: bold;
+}
     </style>
 </head>
 <body>

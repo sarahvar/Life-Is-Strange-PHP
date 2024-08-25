@@ -9,6 +9,7 @@ $pages = array(
 );
 ?>
 
+<header>
     <ul class="navigation">
         <?php
             foreach($pages as $key => $value){
@@ -23,4 +24,4 @@ $pages = array(
             }
         ?>
     </ul>
-</section>
+</header>
