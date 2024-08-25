@@ -5,7 +5,13 @@ body {
     color: #333; /* Couleur de texte principale */
     margin: 0;
     padding: 0;
+    cursor: url('assets/curseur.png'), auto; /* Ajouter l'image comme curseur */
 }
+/* Assurer que le curseur reste le même pour tous les éléments */
+a, button, input, textarea, li {
+    cursor: url('assets/Curseur.png'), auto; /* Appliquer le curseur personnalisé */
+}
+
 
 /* Styles pour les titres */
 h1, h2, h3, h4 {

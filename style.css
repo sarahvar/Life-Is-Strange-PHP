@@ -42,7 +42,7 @@ a {
 ul {
     list-style-type: none;
     padding: 0;
-    margin: 90px 0 0 0; /* Espacement de 90px au-dessus de la liste */
+    margin: 130px 0 0 0; 
     display: flex;
     flex-direction: column; /* Arrange les éléments en colonne */
     align-items: center; /* Centre les éléments horizontalement */
@@ -71,7 +71,10 @@ li:nth-child(3) {
 li:nth-child(4) {
     transform: rotate(6deg); /* Rotation plus marquée à droite */
 }
-
+/* Ajout d'une rotation pour le cinquième élément */
+li:nth-child(5) {
+    transform: rotate(-5deg); /* Rotation plus marquée à gauche */
+}
 /* Style pour les éléments de liste qui contiennent des liens */
 li a {
     font-size: 1.5rem; /* Augmente la taille du texte pour plus de visibilité */

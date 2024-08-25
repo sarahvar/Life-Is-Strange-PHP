@@ -38,29 +38,31 @@ $showMessage = !$_SESSION['music_started'] || isset($_GET['action']) && $_GET['a
         /* Style pour l'invite */
         #play-message {
             position: fixed;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%; /* Centrer verticalement */
+            right: 20px; /* Positionner à droite */
+            transform: translateY(-50%); /* Ajuster le centrage vertical */
             background: rgba(0, 0, 0, 0.7);
             color: #fff;
             padding: 10px;
             border-radius: 5px;
             display: <?php echo $showMessage ? 'block' : 'none'; ?>; /* Afficher le message si nécessaire */
             cursor: pointer;
+            z-index: 1000; /* Assurer que le bouton est au-dessus des autres éléments */
         }
 
         /* Style pour le bouton d'arrêt de la musique */
         #stop-music {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%; /* Centrer verticalement */
+            right: 20px; /* Positionner à droite */
+            transform: translateY(-50%); /* Ajuster le centrage vertical */
             background: rgba(255, 0, 0, 0.7);
             color: #fff;
             padding: 10px;
             border-radius: 5px;
             display: <?php echo $_SESSION['music_started'] ? 'block' : 'none'; ?>; /* Afficher le bouton si la musique est en cours */
             cursor: pointer;
+            z-index: 1000; /* Assurer que le bouton est au-dessus des autres éléments */
         }
     </style>
 </head>
@@ -81,8 +83,7 @@ $showMessage = !$_SESSION['music_started'] || isset($_GET['action']) && $_GET['a
         <a href="?action=stop" id="stop-music">Arrêter la musique</a>
     <?php endif; ?>
 
->
-<div class="container">
+    <div class="container">
         <?php include('header.php'); ?>
     </div>
 </body>
