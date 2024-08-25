@@ -10,18 +10,17 @@
 
         /* Style général */
         body {
-    font-family: 'Gloria Hallelujah', cursive;
-    background-color: #f0f8ff; /* Couleur de fond douce */
-    color: #333; /* Couleur de texte principale */
-    margin: 0;
-    padding: 0;
-    cursor: url('assets/Curseur.png') 16 16, auto; /* Ajouter le curseur avec son point de clic au centre */
-}
+            font-family: 'Gloria Hallelujah', cursive;
+            background-color: #f0f8ff; /* Couleur de fond douce */
+            color: #333; /* Couleur de texte principale */
+            margin: 0;
+            padding: 0;
+            cursor: url('assets/Curseur.png') 16 16, auto; /* Ajouter le curseur avec son point de clic au centre */
+        }
 
-a, button, input, textarea, li {
-    cursor: url('assets/Curseur.png') 16 16, auto; /* Appliquer le curseur personnalisé */
-}
-
+        a, button, input, textarea, li {
+            cursor: url('assets/Curseur.png') 16 16, auto; /* Appliquer le curseur personnalisé */
+        }
 
         /* Style pour les titres */
         h1, h2, h3, h4 {
@@ -151,11 +150,11 @@ a, button, input, textarea, li {
         .navigation a:hover,
         .navigation a.active,
         .navigation li.active a {
-        background-color: #3399ff;
-        transition: background-color 0.3s;
-        color: #ffffff;
-        font-weight: bold;
-}
+            background-color: #3399ff;
+            transition: background-color 0.3s;
+            color: #ffffff;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -171,8 +170,8 @@ a, button, input, textarea, li {
     
     <form method="POST" class="quiz-form">
         <?php
-        // Code PHP ici pour les questions et les réponses
-        $questions = [
+        // Liste complète des questions
+        $all_questions = [
             [
                 'question' => 'Quel est le nom complet de Max Caulfield ?',
                 'answers' => ['Maxine Caulfield', 'Max Caulfield', 'Maxine Carter', 'Max Carter'],
@@ -180,20 +179,55 @@ a, button, input, textarea, li {
             ],
             [
                 'question' => 'Quel est le super pouvoir de Max ?',
-                'answers' => ['Voyage dans le temps', 'Télékinésie', 'Télépathie', 'Invisibilité'],
-                'correct' => 0 // Indice de la bonne réponse
+                'answers' => ['Télékinésie', 'Voyage dans le temps', 'Télépathie', 'Invisibilité'],
+                'correct' => 1 // Indice de la bonne réponse
             ],
             [
                 'question' => 'Quel est le nom de l\'amie d\'enfance de Max ?',
-                'answers' => ['Chloé Price', 'Rachel Amber', 'Victoria Chase', 'Kate Marsh'],
-                'correct' => 0 // Indice de la bonne réponse
+                'answers' => ['Rachel Amber', 'Victoria Chase', 'Kate Marsh', 'Chloé Price'],
+                'correct' => 3 // Indice de la bonne réponse
             ],
             [
                 'question' => 'Quel est le nom de l\'école que Max fréquente ?',
-                'answers' => ['Blackwell Academy', 'Arcadia Bay School', 'Pacific Northwest School', 'West Coast Academy'],
+                'answers' => ['Arcadia Bay School', 'Pacific Northwest School','Blackwell Academy', 'West Coast Academy'],
+                'correct' => 2 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Comment s\'appelle la ville où se déroule l\'histoire ?',
+                'answers' => ['Arcadia Bay', 'Bright Falls', 'Twin Peaks', 'Silent Hill'],
                 'correct' => 0 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Quelle est la passion artistique de Max ?',
+                'answers' => ['Peinture', 'Photographie', 'Écriture', 'Musique'],
+                'correct' => 1 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Quelle est la principale cause des conflits entre Max et Chloé ?',
+                'answers' => ['Le déménagement de Max', 'Les secrets de Chloé', 'La disparition de Rachel', 'Les relations amoureuses'],
+                'correct' => 0 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Qui est le principal antagoniste de "Life Is Strange" ?',
+                'answers' => ['Nathan Prescott', 'Mark Jefferson', 'David Madsen', 'Frank Bowers'],
+                'correct' => 1 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Quel est le nom de la mère de Max ?',
+                'answers' => ['Joyce', 'Diana', 'Sarah', 'Vanessa'],
+                'correct' => 3 // Indice de la bonne réponse
+            ],
+            [
+                'question' => 'Qui est le beau-père de Chloé ?',
+                'answers' => ['Proviseur Wells', 'Mark Jefferson', 'David Madsen', 'Sean Prescott'],
+                'correct' => 2 // Indice de la bonne réponse
             ]
         ];
+        // Mélanger les questions
+        shuffle($all_questions);
+
+        // Sélectionner les 8 premières questions
+        $questions = array_slice($all_questions, 0, 8);
 
         // Initialiser les variables
         $correctAnswers = 0;
