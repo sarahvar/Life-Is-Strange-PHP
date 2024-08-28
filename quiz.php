@@ -76,7 +76,7 @@
 
         /* Style pour chaque option de réponse */
         .answers li {
-            margin: 5px 0;
+            margin: 10px 0; /* Augmenter la marge verticale entre les réponses */
             display: flex;
             align-items: center;
             width: 100%;
@@ -113,6 +113,16 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-results ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .quiz-results li {
+            margin: 15px 0; /* Augmenter la marge verticale entre les éléments de la liste des résultats */
         }
 
         .result p {
