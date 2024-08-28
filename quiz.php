@@ -122,7 +122,7 @@
         }
 
         .quiz-results li {
-            margin: 15px 0; /* Augmenter la marge verticale entre les éléments de la liste des résultats */
+            margin: 35% 0; /* Augmenter la marge verticale entre les éléments de la liste des résultats */
         }
 
         .result p {
