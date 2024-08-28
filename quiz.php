@@ -1,3 +1,104 @@
+<?php
+session_start();
+
+// Vérifier si les questions sont déjà stockées dans la session
+if (!isset($_SESSION['questions']) || isset($_POST['reset'])) {
+    // Liste complète des questions
+    $all_questions = [
+        [
+            'question' => 'Quel est le nom complet de Max Caulfield ?',
+            'answers' => ['Maxine Caulfield', 'Max Caulfield', 'Maxine Carter', 'Max Carter'],
+            'correct' => 0
+        ],
+        [
+            'question' => 'Quel est le super pouvoir de Max ?',
+            'answers' => ['Télékinésie', 'Voyage dans le temps', 'Télépathie', 'Invisibilité'],
+            'correct' => 1
+        ],
+        [
+            'question' => 'Quel est le nom de l\'amie d\'enfance de Max ?',
+            'answers' => ['Rachel Amber', 'Victoria Chase', 'Kate Marsh', 'Chloé Price'],
+            'correct' => 3
+        ],
+        [
+            'question' => 'Quel est le nom de l\'école que Max fréquente ?',
+            'answers' => ['Arcadia Bay School', 'Pacific Northwest School', 'Blackwell Academy', 'West Coast Academy'],
+            'correct' => 2
+        ],
+        [
+            'question' => 'Comment s\'appelle la ville où se déroule l\'histoire ?',
+            'answers' => ['Arcadia Bay', 'Bright Falls', 'Twin Peaks', 'Silent Hill'],
+            'correct' => 0
+        ],
+        [
+            'question' => 'Quelle est la passion artistique de Max ?',
+            'answers' => ['Peinture', 'Photographie', 'Écriture', 'Musique'],
+            'correct' => 1
+        ],
+        [
+            'question' => 'Quelle est la principale cause des conflits entre Max et Chloé ?',
+            'answers' => ['Le déménagement de Max', 'Les secrets de Chloé', 'La disparition de Rachel', 'Les relations amoureuses'],
+            'correct' => 0
+        ],
+        [
+            'question' => 'Qui est le principal antagoniste de "Life Is Strange" ?',
+            'answers' => ['Nathan Prescott', 'Mark Jefferson', 'David Madsen', 'Frank Bowers'],
+            'correct' => 1
+        ],
+        [
+            'question' => 'Quel est le nom de la mère de Max ?',
+            'answers' => ['Joyce', 'Diana', 'Sarah', 'Vanessa'],
+            'correct' => 3
+        ],
+        [
+            'question' => 'Qui est le beau-père de Chloé ?',
+            'answers' => ['Proviseur Wells', 'Mark Jefferson', 'David Madsen', 'Sean Prescott'],
+            'correct' => 2
+        ]
+    ];
+
+    // Mélanger les questions
+    shuffle($all_questions);
+
+    // Sélectionner les 8 premières questions
+    $_SESSION['questions'] = array_slice($all_questions, 0, 8);
+}
+
+// Initialiser les variables
+$correctAnswers = 0;
+$responses = [];
+$results = [];
+
+// Vérifier si le quiz a été soumis
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['reset'])) {
+    $responses = $_POST['answers'] ?? [];
+    foreach ($_SESSION['questions'] as $index => $question) {
+        $selectedAnswer = isset($responses[$index]) ? intval($responses[$index]) : null;
+        if ($selectedAnswer === $question['correct']) {
+            $correctAnswers++;
+            $results[$index] = [
+                'correct' => true,
+                'selected' => $question['answers'][$selectedAnswer],
+                'correct_answer' => $question['answers'][$question['correct']]
+            ];
+        } else {
+            $results[$index] = [
+                'correct' => false,
+                'selected' => $selectedAnswer !== null ? $question['answers'][$selectedAnswer] : 'Aucune réponse',
+                'correct_answer' => $question['answers'][$question['correct']]
+            ];
+        }
+    }
+} else {
+    // Réinitialiser les réponses et les résultats pour une nouvelle tentative
+    $results = array_fill(0, count($_SESSION['questions']), [
+        'correct' => false,
+        'selected' => 'Aucune réponse',
+        'correct_answer' => ''
+    ]);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -76,7 +177,7 @@
 
         /* Style pour chaque option de réponse */
         .answers li {
-            margin: 10px 0; /* Augmenter la marge verticale entre les réponses */
+            margin: 20px 0; /* Augmenter la marge verticale entre les réponses */
             display: flex;
             align-items: center;
             width: 100%;
@@ -122,11 +223,7 @@
         }
 
         .quiz-results li {
-            margin: 35% 0; /* Augmenter la marge verticale entre les éléments de la liste des résultats */
-        }
-
-        .result p {
-            margin: 0 0 10px 0;
+            margin: 35% 0; /* Ajuster la marge entre les éléments de la liste des résultats */
         }
 
         .correct-answer {
@@ -206,100 +303,13 @@
 
 <div class="quiz-container">
     <h1>Quiz Interactif - Life Is Strange</h1>
-    
+
     <form method="POST" class="quiz-form">
         <div class="quiz-content">
             <div class="questions">
                 <?php
-                // Liste complète des questions
-                $all_questions = [
-                    [
-                        'question' => 'Quel est le nom complet de Max Caulfield ?',
-                        'answers' => ['Maxine Caulfield', 'Max Caulfield', 'Maxine Carter', 'Max Carter'],
-                        'correct' => 1
-                    ],
-                    [
-                        'question' => 'Quel est le super pouvoir de Max ?',
-                        'answers' => ['Télékinésie', 'Voyage dans le temps', 'Télépathie', 'Invisibilité'],
-                        'correct' => 1
-                    ],
-                    [
-                        'question' => 'Quel est le nom de l\'amie d\'enfance de Max ?',
-                        'answers' => ['Rachel Amber', 'Victoria Chase', 'Kate Marsh', 'Chloé Price'],
-                        'correct' => 3
-                    ],
-                    [
-                        'question' => 'Quel est le nom de l\'école que Max fréquente ?',
-                        'answers' => ['Arcadia Bay School', 'Pacific Northwest School', 'Blackwell Academy', 'West Coast Academy'],
-                        'correct' => 2
-                    ],
-                    [
-                        'question' => 'Comment s\'appelle la ville où se déroule l\'histoire ?',
-                        'answers' => ['Arcadia Bay', 'Bright Falls', 'Twin Peaks', 'Silent Hill'],
-                        'correct' => 0
-                    ],
-                    [
-                        'question' => 'Quelle est la passion artistique de Max ?',
-                        'answers' => ['Peinture', 'Photographie', 'Écriture', 'Musique'],
-                        'correct' => 1
-                    ],
-                    [
-                        'question' => 'Quelle est la principale cause des conflits entre Max et Chloé ?',
-                        'answers' => ['Le déménagement de Max', 'Les secrets de Chloé', 'La disparition de Rachel', 'Les relations amoureuses'],
-                        'correct' => 0
-                    ],
-                    [
-                        'question' => 'Qui est le principal antagoniste de "Life Is Strange" ?',
-                        'answers' => ['Nathan Prescott', 'Mark Jefferson', 'David Madsen', 'Frank Bowers'],
-                        'correct' => 1
-                    ],
-                    [
-                        'question' => 'Quel est le nom de la mère de Max ?',
-                        'answers' => ['Joyce', 'Diana', 'Sarah', 'Vanessa'],
-                        'correct' => 0
-                    ],
-                    [
-                        'question' => 'Qui est le beau-père de Chloé ?',
-                        'answers' => ['Proviseur Wells', 'Mark Jefferson', 'David Madsen', 'Sean Prescott'],
-                        'correct' => 2
-                    ]
-                ];
-                
-                // Mélanger les questions
-                shuffle($all_questions);
-
-                // Sélectionner les 8 premières questions
-                $questions = array_slice($all_questions, 0, 8);
-
-                // Initialiser les variables
-                $correctAnswers = 0;
-                $responses = [];
-                $results = [];
-
-                // Vérifier si le quiz a été soumis
-                if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                    $responses = $_POST['answers'] ?? [];
-                    foreach ($questions as $index => $question) {
-                        $selectedAnswer = isset($responses[$index]) ? intval($responses[$index]) : null;
-                        if ($selectedAnswer === $question['correct']) {
-                            $correctAnswers++;
-                            $results[$index] = [
-                                'correct' => true,
-                                'selected' => $question['answers'][$selectedAnswer],
-                                'correct_answer' => $question['answers'][$question['correct']]
-                            ];
-                        } else {
-                            $results[$index] = [
-                                'correct' => false,
-                                'selected' => $selectedAnswer !== null ? $question['answers'][$selectedAnswer] : 'Aucune réponse',
-                                'correct_answer' => $question['answers'][$question['correct']]
-                            ];
-                        }
-                    }
-                }
-                
                 // Affichage des questions et des réponses
-                foreach ($questions as $index => $question) {
+                foreach ($_SESSION['questions'] as $index => $question) {
                     ?>
                     <div class="question">
                         <h3>Question <?php echo ($index + 1); ?>: <?php echo htmlspecialchars($question['question']); ?></h3>
@@ -319,12 +329,13 @@
                 }
                 ?>
                 <button type="submit">Soumettre</button>
+                <button type="submit" name="reset">Réinitialiser</button>
             </div>
 
-            <?php if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
+            <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($_POST['reset'])) { ?>
                 <div class="quiz-results">
                     <h2>Résultats</h2>
-                    <p>Vous avez obtenu <?php echo $correctAnswers; ?> sur <?php echo count($questions); ?> bonnes réponses.</p>
+                    <p>Vous avez obtenu <?php echo $correctAnswers; ?> sur <?php echo count($_SESSION['questions']); ?> bonnes réponses.</p>
                     <ul>
                         <?php foreach ($results as $index => $result) { ?>
                             <li class="<?php echo $result['correct'] ? 'correct-answer' : 'incorrect-answer'; ?>">
